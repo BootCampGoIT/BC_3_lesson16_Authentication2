@@ -13,9 +13,14 @@ const Test = () => {
     //   data: "hello",
     // });
     axios.post(
-      `${process.env.REACT_APP_BASE_URL}/myOwnFolder/${localId}.json?auth=${token}`,
+      `${process.env.REACT_APP_BASE_URL}/myOwnFolder/${localId}.json`,
       {
-        data: "11111111111111",
+        data: "my info",
+      },
+      {
+        params: {
+          auth: token,
+        },
       }
     );
   };
@@ -43,29 +48,27 @@ const Test = () => {
 
 export default Test;
 
-// realTime configuration
+// realTime rules
 // {
 //     "rules": {
 //       "tutors": {
 //         ".read": true,
-//         ".write": false
+//         ".write": true
 //       },
 //         "students": {
 //            ".read": true,
-//         ".write": false
+//         ".write": true
 //         },
-//           "history": {
+//           "myOwnFolder": {
 //             "$uid": {
 //               ".read": "$uid === auth.uid",
 //                 ".write": "$uid === auth.uid"
 //             }
 //           }
-//       //     "users": {
-//       //   "$user_id": {
-//       //     // grants write access to the owner of this user account
-//       //     // whose uid must exactly match the key ($user_id)
-//       //     ".write": "auth !== null && auth.user_id === 'yuY4zi24JadojY4Y6JwlKHUwnof2'"
-//       //   }
-//       // }
+//     "users": {
+//   "$user_id": {
+//     ".write": "auth !== null && auth.user_id === 'yuY4zi24JadojY4Y6JwlKHUwnof2'"
+//   }
+// }
 //     }
 //   }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { signOut } from "../actions/authActions";
 import {
   addNewTutor,
   deleteTutor,
@@ -20,6 +21,7 @@ const addNewTutorOperation = (tutor) => async (dispatch, getState) => {
     dispatch(addNewTutor({ ...tutor, id: response.data.name }));
   } catch (error) {
     dispatch(setError(error));
+    // dispatch(signOut())
   } finally {
     dispatch(setLoading());
   }
